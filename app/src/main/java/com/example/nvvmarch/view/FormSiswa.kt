@@ -1,4 +1,4 @@
-package com.example.meet6_navigation_mvvm.view
+package com.example.nvvmarch.view
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -30,6 +30,8 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -41,8 +43,8 @@ fun FormSiswa(
     var txtNama by rememberSaveable { mutableStateOf("") }
     var txtAlamat by remember { mutableStateOf("") }
     var txtGender by remember { mutableStateOf("") }
-    val listData: MutableList<String> = mutableListOf(txtNama, txtAlamat, txtGender)
-) {
+    val listData: MutableList<String> = mutableListOf(txtNama, txtAlamat, txtGender)   // ✔ diperbaiki (hapus ") {")
+
     Scaffold(
         modifier = Modifier,
         topBar = {
@@ -74,28 +76,25 @@ fun FormSiswa(
                     txtNama = it
                 }
             )
+
             HorizontalDivider(
-                modifier = Modifier
-                    .padding(20.dp)
-                    .width(250.dp),
+                modifier = Modifier.padding(20.dp).width(250.dp),
                 thickness = 1.dp,
                 color = Color.Red
             )
+
             Row {
                 pilihanJK.forEach { item ->
-                    Row(modifier = Modifier.selectable(
-                        selected = txtGender == item,
-                        onClick = {
-                            txtGender = item
-                        }
-                    ),
+                    Row(
+                        modifier = Modifier.selectable(
+                            selected = txtGender == item,
+                            onClick = { txtGender = item }
+                        ),
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         RadioButton(
                             selected = txtGender == item,
-                            onClick = {
-                                txtGender = item
-                            }
+                            onClick = { txtGender = item }
                         )
                         Text(text = item)
                     }
@@ -103,9 +102,7 @@ fun FormSiswa(
             }
 
             HorizontalDivider(
-                modifier = Modifier
-                    .padding(20.dp)
-                    .width(250.dp),
+                modifier = Modifier.padding(20.dp).width(250.dp),
                 thickness = 1.dp,
                 color = Color.Red
             )
@@ -116,9 +113,7 @@ fun FormSiswa(
                 shape = MaterialTheme.shapes.medium,
                 modifier = Modifier.width(350.dp),
                 label = { Text(text = "Alamat Lengkap") },
-                onValueChange = {
-                    txtAlamat = it
-                }
+                onValueChange = { txtAlamat = it }
             )
 
             Spacer(modifier = Modifier.height(20.dp))
@@ -126,13 +121,10 @@ fun FormSiswa(
             Button(
                 modifier = Modifier.fillMaxWidth(1f).padding(horizontal = 20.dp),
                 enabled = txtAlamat.isNotEmpty(),
-                onClick = { obSubmitButtonClicked(listData)}
+                onClick = { obSubmitButtonClicked(listData) }
             ) {
                 Text(text = stringResource(id = R.string.submit))
             }
         }
     }
-    }
-
-
-
+}
