@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
+import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Scaffold
@@ -30,7 +31,7 @@ import com.example.nvvmarch.model.Siswa
 @Composable
 fun TampilSiswa(
     statusUiSiswa: Siswa,
-    onBackBtnClick: () -> Unit
+    onBackButtonClicked: () -> Unit
 ) {
     val items = listOf(
         Pair(stringResource("Nama Lengkap"), statusUiSiswa.nama),
@@ -53,4 +54,38 @@ fun TampilSiswa(
                 )
             )
         }
-    )
+    ){ isiRuang ->
+        Column(
+            modifier = Modifier.padding(isiRuang),
+            verticalArrangement = Arrangement.SpaceBetween
+        ) {
+            Column(
+                modifier = Modifier.padding(dimensionResource(id = R.dimen.padding_medium)),
+                verticalArrangement = Arrangement.spacedBy(
+                    dimensionResource(id = R.dimen.padding_small)
+                )
+            ) {
+                items.forEach { item ->
+                    Column {
+                        Text(
+                            text = item.first.uppercase(),
+                            fontSize = 16.sp
+                        )
+                        Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.padding_small)))
+                        Text(
+                            text = item.second,
+                            fontWeight = FontWeight.Bold,
+                            fontFamily = FontFamily.Cursive,
+                            fontSize = 22.sp
+                        )
+                    }
+                    Divider(thickness = dimensionResource(R.dimen.thickness_divider))
+                }
+
+                Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_small)))
+
+
+            }
+        }
+    }
+}
