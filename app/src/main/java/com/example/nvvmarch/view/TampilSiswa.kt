@@ -34,9 +34,9 @@ fun TampilSiswa(
     onBackButtonClicked: () -> Unit
 ) {
     val items = listOf(
-        Pair(stringResource("Nama Lengkap"), statusUiSiswa.nama),
-        Pair(stringResource("Jenis Kelamin"), statusUiSiswa.gender),
-        Pair(stringResource("Alamat"), statusUiSiswa.alamat)
+        Pair(stringResource(id = R.string.nama), statusUiSiswa.nama),
+        Pair(stringResource(id = R.string.gender), statusUiSiswa.gender),
+        Pair(stringResource(id = R.string.alamat), statusUiSiswa.alamat)
     )
 
     Scaffold(
@@ -84,7 +84,12 @@ fun TampilSiswa(
 
                 Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_small)))
 
-
+                Button(
+                    modifier = Modifier.fillMaxWidth(),
+                    onClick = onBackButtonClicked
+                ) {
+                    Text(text = stringResource(id = R.string.back))
+                }
             }
         }
     }
