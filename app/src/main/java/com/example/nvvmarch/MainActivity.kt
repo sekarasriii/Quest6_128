@@ -12,16 +12,19 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.nvvmarch.ui.theme.NvvmarchTheme
+import com.example.nvvmarch.view.FormSiswa
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            NvvmarchTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
+            NvvmarchTheme{
+                Scaffold(
+                    modifier = Modifier.fillMaxSize()
+                ) { innerPadding ->
+                    // Panggilan ke composable utama aplikasi
+                    SiswaApp(
                         modifier = Modifier.padding(innerPadding)
                     )
                 }

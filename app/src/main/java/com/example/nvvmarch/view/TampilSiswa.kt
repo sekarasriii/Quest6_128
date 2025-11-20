@@ -45,7 +45,7 @@ fun TampilSiswa(
             TopAppBar(
                 title = {
                     Text(
-                        text = stringResource(id = "Data Siswa"),
+                        text = stringResource(id = R.string.detail),
                         color = Color.White
                     )
                 },
