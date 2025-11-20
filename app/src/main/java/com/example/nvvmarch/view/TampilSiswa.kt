@@ -38,3 +38,19 @@ fun TampilSiswa(
         Pair(stringResource("Alamat"), statusUiSiswa.alamat)
     )
 
+    Scaffold(
+        modifier = Modifier,
+        topBar = {
+            TopAppBar(
+                title = {
+                    Text(
+                        text = stringResource(id = "Data Siswa"),
+                        color = Color.White
+                    )
+                },
+                colors = TopAppBarDefaults.mediumTopAppBarColors(
+                    containerColor = colorResource(id = R.color.purple_500)
+                )
+            )
+        }
+    )
